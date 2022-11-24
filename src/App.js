@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useState } from "react";
+
+//import { BottomNavigation } from './components/BottomNavigation';
+//import { CheckPlantButton } from './components/CheckPlantButton';
+
+// import { CreatePlantButton } from "./components/CreatePlantButton";
+// import { PlantItem } from "./components/PlantItem";
+// import { PlantList } from "./components/PlantList";
+
+import "./App.css";
+import { BottomNavigationMUI } from "./components/BottomNavigationMUI";
+import { Favorite } from "./components/Favorite";
+import { Home } from "./components/Home";
 
 function App() {
+  const [value, setValue] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Sistema de gestion Huerta Siata <code> :) </code>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {value === "Home" && <Home /> }
+      {value === "Favorite" && <Favorite />}
+      <BottomNavigationMUI
+        handleOnChange={(newValue) => {
+          setValue(newValue);
+        }}
+      />
+    </>
   );
 }
 
