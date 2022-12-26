@@ -2,7 +2,7 @@ import React from "react";
 
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import AddIcon from '@mui/icons-material/Add';
 
 import { useState } from "react";
 import "./BottomNavigationMUI.css";
@@ -11,21 +11,33 @@ import "./BottomNavigationMUI.css";
 export const BottomNavigationMUI = ({handleOnChange}) => {
 
   return (
-    <BottomNavigation
+
+    
+    <BottomNavigation 
+      sx = {{
+        background: 'white',
+       
+       
+        marginBot : '20px',
+        display : 'flex',
+        flexDirection: 'line' ,
+        aligItems : ' left',
+        
+      }}
       showLabels
       onChange={(event, newValue) => {
         handleOnChange(newValue);
       }}
     >
       <BottomNavigationAction
-        label="HomeIcon"
+        label="Mis Plantas"
         icon={<HomeIcon />}
         value={"Home"}
-      />
+      /> 
       <BottomNavigationAction
-        label="Favorites"
-        icon={<FavoriteIcon />}
-        value={"Favorite"}
+        label="Agregar "
+        icon={<AddIcon />}
+        value={"AddIcon"}
       />
     </BottomNavigation>
   );

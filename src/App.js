@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Container } from "@mui/material"
 
 //import { BottomNavigation } from './components/BottomNavigation';
 //import { CheckPlantButton } from './components/CheckPlantButton';
@@ -10,21 +11,68 @@ import { useState } from "react";
 
 import "./App.css";
 import { BottomNavigationMUI } from "./components/BottomNavigationMUI";
-import { Favorite } from "./components/Favorite";
+import { AddIcon } from "./components/AddIcon";
 import { Home } from "./components/Home";
+
+import { PlantList } from "./components/PlantList.js";
+import { PlantItem } from "./components/PlantItem.js";
+
+
+
+
+const plants=[
+  {text:'cebolla', completed:false},
+ 
+  {text:'Llorar ', completed:false}
+];
 
 function App() {
   const [value, setValue] = useState("");
 
   return (
     <>
-      {value === "Home" && <Home /> }
-      {value === "Favorite" && <Favorite />}
+
+    <Container
+      sx = {{
+        background: 'whitesmoke',
+        width : '90vw',
+        height : '800px',
+        borderRadius :'16px', 
+        marginTop : '40px',
+        display : 'flex',
+        flexDirection: 'column' ,
+        aligItems : ' center',
+      }}>
+
+        
+        <PlantList>
+        {plants.map(plant => (
+          <PlantItem
+            key={plant.text}
+            text={plant.text}
+            completed={plant.completed}
+          />
+        ))}
+       </PlantList>
+       
+    </Container>
+
+
+     
+
+
+
+      {value === "Home" && <Home />}
+      {value === "Agregar" && <AddIcon />}
+     
       <BottomNavigationMUI
         handleOnChange={(newValue) => {
           setValue(newValue);
         }}
       />
+
+
+
     </>
   );
 }
