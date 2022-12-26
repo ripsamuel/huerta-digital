@@ -1,24 +1,79 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useState } from "react";
+import { Container } from "@mui/material"
+
+//import { BottomNavigation } from './components/BottomNavigation';
+//import { CheckPlantButton } from './components/CheckPlantButton';
+
+// import { CreatePlantButton } from "./components/CreatePlantButton";
+// import { PlantItem } from "./components/PlantItem";
+// import { PlantList } from "./components/PlantList";
+
+import "./App.css";
+import { BottomNavigationMUI } from "./components/BottomNavigationMUI";
+import { AddIcon } from "./components/AddIcon";
+import { Home } from "./components/Home";
+
+import { PlantList } from "./components/PlantList.js";
+import { PlantItem } from "./components/PlantItem.js";
+
+
+
+
+const plants=[
+  {text:'cebolla', completed:false},
+ 
+  {text:'Llorar ', completed:false}
+];
 
 function App() {
+  const [value, setValue] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Sistema de gestion Huerta Siata <code> :) </code>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+    <Container
+      sx = {{
+        background: 'whitesmoke',
+        width : '90vw',
+        height : '800px',
+        borderRadius :'16px', 
+        marginTop : '40px',
+        display : 'flex',
+        flexDirection: 'column' ,
+        aligItems : ' center',
+      }}>
+
+        
+        <PlantList>
+        {plants.map(plant => (
+          <PlantItem
+            key={plant.text}
+            text={plant.text}
+            completed={plant.completed}
+          />
+        ))}
+       </PlantList>
+       
+    </Container>
+
+
+     
+
+
+
+      {value === "Home" && <Home />}
+      {value === "Agregar" && <AddIcon />}
+     
+      <BottomNavigationMUI
+        handleOnChange={(newValue) => {
+          setValue(newValue);
+        }}
+      />
+
+
+
+    </>
   );
 }
 
