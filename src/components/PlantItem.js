@@ -13,10 +13,15 @@ function PlantItem(props) {
   return (
     <li className="PlantItem">
          <Card sx={{
+          
          maxWidth: 345,
          background: 'whitesmoke',
          width : '345px',
          height : '345px',
+         boxShadow : '0 15px 25px rgba(0, 0, 0, 0.1)',
+         borderRadius : '3px',
+      
+
         }}>
         <CardMedia className="TopName"
           component="img"

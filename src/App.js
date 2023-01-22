@@ -22,8 +22,7 @@ import { PlantItem } from "./components/PlantItem.js";
 
 const plants=[
   {text:'cebolla', completed:false},
- 
-  {text:'Llorar ', completed:false}
+  
 ];
 
 function App() {
@@ -35,8 +34,8 @@ function App() {
     <Container
       sx = {{
         background: 'whitesmoke',
-        width : '90vw',
-        height : '800px',
+        width : '100%',
+        height : '600px',
         borderRadius :'16px', 
         marginTop : '40px',
         display : 'flex',
