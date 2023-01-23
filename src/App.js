@@ -20,7 +20,11 @@ import { PlantItem } from "./components/PlantItem.js";
 
 
 
+
+
 const plants=[
+  {text:'cebolla', completed:false},
+  {text:'cebolla', completed:false},
   {text:'cebolla', completed:false},
   
 ];
@@ -35,18 +39,24 @@ function App() {
       sx = {{
         background: 'whitesmoke',
         width : '100%',
-        height : '600px',
+        height : '100%',
         borderRadius :'16px', 
-        marginTop : '40px',
+        marginTop : '16px',
+        marginBottom : '20px',
         display : 'flex',
         flexDirection: 'column' ,
-        aligItems : ' center',
+        
       }}>
 
         
         <PlantList>
         {plants.map(plant => (
           <PlantItem
+
+          sx = {{
+
+
+          }}
             key={plant.text}
             text={plant.text}
             completed={plant.completed}

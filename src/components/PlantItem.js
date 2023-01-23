@@ -14,36 +14,61 @@ function PlantItem(props) {
     <li className="PlantItem">
          <Card sx={{
           
-         maxWidth: 345,
+         maxWidth: '345px',
+         maxHeight : '345px',
          background: 'whitesmoke',
-         width : '345px',
-         height : '345px',
-         boxShadow : '0 15px 25px rgba(0, 0, 0, 0.1)',
-         borderRadius : '3px',
-      
+         width : '343px',
+         height : '343px',
+         boxShadow : '10px 15px 25px rgba(0, 0, 0, 0.1)',
+        
 
+        
         }}>
-        <CardMedia className="TopName"
+        <CardMedia 
+          className="TopName"
           component="img"
           alt="Nombre planta "
-          height="60px"
+          
           image="/static/images/cards/contemplative-reptile.jpg"
+
+          sx = {{
+
+            width : '340px',
+            height : '60px',
+            
+            borderStyle : 'solid',
+            borderWidth : '1px',
+            BorderColor : '#ddd'
+    
+   
+          }}
         />
         <CardContent sx ={{
         background: 'whitesmoke',
         width : '340px',
         height : '180px',
+      
+       
+        
        
         }}>
           <Typography gutterBottom variant="h5" component="div">
           </Typography>
           
         </CardContent>
+
         <CardActions sx ={{
         background: 'white',
-        width : '340px',
-        height : '60px',
-        marginBottom : '0px',
+        width : '325px',
+        height : '50px',
+
+        borderStyle : 'solid',
+        borderWidth : '1px',
+        BorderColor : '#ddd'
+
+
+        
+
         }}>
           <Button size="small">Actualizar</Button>
         

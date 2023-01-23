@@ -19,16 +19,14 @@ export const BottomNavigationMUI = ({handleOnChange}) => {
 
         boxShadow : '0 15px 25px rgba(0, 0, 0, 0.1)',
         
-        minHeight : '30px',
-        maxHeigth : '200px',
+        position: 'fixed', bottom: 0, left: 0, right: 0,
+      
 
         margin : '10px',
-        zIndex : '1',
+
         marginBot : '20px',
-        display : 'flex',
-        flexDirection: 'line' ,
-        aligItems : ' left',
         
+        textAlign :'left',        
       }}
       
       showLabels
@@ -40,7 +38,7 @@ export const BottomNavigationMUI = ({handleOnChange}) => {
       <BottomNavigationAction
         sx ={{
           ":hover": {
-            border: "1px solid #00FF00",
+            border: "1px solid #33ECFF",
             color: 'gray',
           },
         }}
@@ -51,7 +49,7 @@ export const BottomNavigationMUI = ({handleOnChange}) => {
       <BottomNavigationAction
         sx ={{
           ":hover": {
-            border: "1px solid #00FF00",
+            border: "1px solid #33ECFF",
             color: 'gray',
           },
         }}
