@@ -11,26 +11,16 @@ import "./BottomNavigationMUI.css";
 export const BottomNavigationMUI = ({handleOnChange}) => {
 
   return (
-
-    
-    <BottomNavigation 
+    <BottomNavigation
       sx = {{
         background: 'white',
-
         boxShadow : '0 15px 25px rgba(0, 0, 0, 0.1)',
-        
         position: 'fixed', bottom: 0, left: 0, right: 0,
-      
-
         margin : '10px',
-
         marginBot : '20px',
-        
-        textAlign :'left',        
+        textAlign :'left',
       }}
-      
       showLabels
-
       onChange={(event, newValue) => {
         handleOnChange(newValue);
       }}
@@ -38,19 +28,17 @@ export const BottomNavigationMUI = ({handleOnChange}) => {
       <BottomNavigationAction
         sx ={{
           ":hover": {
-            border: "1px solid #33ECFF",
-            color: 'gray',
+            color: 'blue',
           },
         }}
         label="Mis Plantas"
         icon={<HomeIcon />}
         value={"Home"}
-      /> 
-      <BottomNavigationAction
+      />
+      <BottomNavigationAction id="btn_agregar" onClick={() => console.log('clik')}
         sx ={{
           ":hover": {
-            border: "1px solid #33ECFF",
-            color: 'gray',
+            color: 'blue',
           },
         }}
 
