@@ -5,7 +5,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import AddIcon from '@mui/icons-material/Add';
 
 /*import { useState } from "react";*/
-import "./BottomNavigationMUI.css";
+// import "./BottomNavigationMUI.css";
 // import Home from "@mui/icons-material/Home";
 
 export const BottomNavigationMUI = ({handleOnChange}) => {

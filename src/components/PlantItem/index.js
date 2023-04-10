@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 function PlantItem(props) {
   return (
     <li className="PlantItem">
+
          <Card sx={{
          maxWidth: '345px',
          maxHeight : '345px',
@@ -31,7 +32,8 @@ function PlantItem(props) {
             alignItems: 'center',
             paddingLeft: '15px',
           }}
-        >nombreplanta harcode</CardMedia>
+        >{props.text}</CardMedia>
+
         <CardContent sx ={{
         background: 'whitesmoke',
         width : '340px',
