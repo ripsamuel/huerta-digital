@@ -1,73 +1,104 @@
 import React from "react";
 import { useState } from "react";
-import { Container } from "@mui/material"
+import { AppUI } from "./AppUI";
 
 import "./App.css";
-import { BottomNavigationMUI } from "../BottomNavigation";
 
-import { PlantList } from "../PlantList/index.js";
-import { PlantItem } from "../PlantItem/index.js";
-
-import { PlantsCounter } from "../PlantsCounter";
 
 const plantsDefault = [
-  {text:'uchuva'},
+  {text:'uchuva '},
   {text:'cebolla'},
   {text:'naranja'},
+  {text:'aaaa'},
+  {text:'diosmio'},
+
+
 ];
 
-function App() {
-  // const [plants, setPlants] = React.useState(plantsDefault);
 
-  const localStoragePlants = localStorage.getItem('PLANTS_V1');
-  let parsedPlants;
+function useLocalStorage (itemName , initialValue ) {
+  const [loading, setLoading] = React.useState(true);
+  const [item, setItem] = React.useState(initialValue);
 
-  if(!localStoragePlants) {
-    localStorage.setItem('PLANTS_V1', JSON.stringify([]));
-    parsedPlants = [];
-  }else {
-    parsedPlants = JSON.parse(localStoragePlants);
+  React.useEffect(() => {
+    setTimeout(() => {
+      const localStorageItem = localStorage.getItem(itemName);
+      let parsedItem;
+
+      if(!localStorageItem) {
+        localStorage.setItem('itemName', JSON.stringify(initialValue));
+        parsedItem = [];
+        console.log('estoy true')
+
+      }else {
+        parsedItem = JSON.parse(localStorageItem);
+        console.log('estoy else')
+      }
+      setItem(parsedItem);
+      setLoading(false);
+
+    }, 2000);
+  })
+
+
+  const saveItem = (newItem) => {
+    const stringifiedItem = JSON.stringify(newItem);
+    localStorage.setItem(itemName, stringifiedItem);
+    setItem(newItem);
+
   }
-  const [plants, setPlants] = React.useState(parsedPlants);
+  return {
+    item,
+    saveItem,
+    loading,
+  };
+}
+
+function App() {
+  const {
+    item: plants,
+    saveItem: savePlants, 
+    loading,
+  } = useLocalStorage('PLANTS_V1', []);
+  const [searchValue, setSearchValue] = React.useState('');
+  let searchedPlants = [];
+
   const totalPlants = plants.length;
 
+  if (!searchValue.length >= 1) {
+    searchedPlants = plants;
+  } else {
+    searchedPlants = plants.filter(plant => {
+      const plantText = plant.text.toLowerCase();
+      const searchText = searchValue.toLowerCase();
+      return plantText.includes(searchText);
+    });
+  }
 
-  const [value, setValue] = useState("");
+
+  const deletePlant = (text) => {
+    const plantsIndex = plants.findIndex(plant => plant.text === text);
+    const newPlants = [...plants];
+    console.log('plants es 1 -> ' + plants)
+    console.log(newPlants)
+
+    newPlants.splice(plantsIndex, 1);
+    savePlants(newPlants);
+
+    console.log('estoy en delete')
+    console.log(newPlants)
+
+  };
+
   return (
-    <>
-    <Container
-      sx = {{
-        background: 'whitesmoke',
-        width : '100vw',
-        borderRadius :'16px',
-        marginTop : '16px',
-        marginBottom : '20px',
-        display : 'flex',
-        flexDirection: 'column' ,
-      }}>
 
-        <PlantList>
-            {parsedPlants.map(plant => (
-              <PlantItem
-                key={plant.text}
-                text={plant.text}
-              />
-            ))}
-       </PlantList>
-
-       <PlantsCounter
-        total={totalPlants}
-      />
-
-      <BottomNavigationMUI
-        handleOnChange={(newValue) => {
-          setValue(newValue);
-        }}
-      />
-
-    </Container>
-
-    </>
+    <AppUI
+    loading = {loading}
+    totalPlants= {totalPlants}
+    searchedPlants = {searchedPlants}
+    setSearchValue={setSearchValue}
+    deletePlant = {deletePlant}
+    />
   );
 }
 

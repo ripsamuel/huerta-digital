@@ -48,8 +48,18 @@ function PlantItem(props) {
         height : '50px',
         }}>
           <Button size="small">Actualizar</Button>
-        
+
         </CardActions>
+
+          <p className={`TodoItem-p ${props.completed && 'TodoItem-p--complete'}`}>
+            {props.text}
+          </p>
+        <span
+          className="Icon Icon-delete"
+          onClick={props.onDelete}
+        >
+          X
+        </span>
       </Card>
     </li>
   );
