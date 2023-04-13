@@ -1,7 +1,9 @@
 import React from 'react';
+import { PlantContext } from '../PlantContext';
 // import './PlantSearch.css';
 
-function PlantSearch({ searchValue, setSearchValue }) {
+function PlantSearch() {
+  const { searchValue, setSearchValue } = React.useContext(PlantContext);
   const onSearchValueChange = (event) => {
     console.log(event.target.value);
     setSearchValue(event.target.value);

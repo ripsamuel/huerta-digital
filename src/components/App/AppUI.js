@@ -1,22 +1,27 @@
+import React from "react";
 import { Container } from "@mui/material"
 import { BottomNavigationMUI } from "../BottomNavigation";
 import { PlantList } from "../PlantList/index.js";
 import { PlantItem } from "../PlantItem/index.js";
-import { PlantsCounter } from "../PlantsCounter";
+// import { PlantsCounter } from "../PlantsCounter";
 import { PlantSearch } from '../PlantSearch';
+import { PlantContext } from '../PlantContext';
+import { Modal } from '../Modal';
+import { CreatePlantButton } from '../CreatePlantButton';
 
 
 
-function AppUI({
-    loading,
+
+
+function AppUI()  {
+  const {
     error,
-    totalPlants,
+    loading,
     searchedPlants,
     deletePlant,
-    searchValue,
-    setSearchValue,
-
-})  {
+    openModal,
+    setOpenModal,
+  } = React.useContext(PlantContext);
     return  (
     <>
     <Container
@@ -28,33 +33,39 @@ function AppUI({
         display : 'flex',
         flexDirection: 'column' ,
       }}>
-         <PlantSearch
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
-        <PlantList>
-        {loading && <p> estamos carganda ...</p>}
-        {error && <p> desesperate ...</p>}
-        {(!loading && !searchedPlants.lenght) && <p> crea tu primera planta de la huerta </p>}
-        
+        <PlantSearch/>
 
+          <PlantList>
+          {loading && <p> estamos carganda ...</p>}
+          {error && <p> desesperate ...</p>}
+          {(!loading && !searchedPlants.lenght) && <p> crea tu primera planta de la huerta </p>}
 
-            {searchedPlants.map(plant => (
-              <PlantItem
-                key={plant.text}
-                text={plant.text}
-                onDelete={() => deletePlant(plant.text)}
-              />
-            ))}
-       </PlantList>
+              {searchedPlants.map(plant => (
+                <PlantItem
+                  key={plant.text}
+                  text={plant.text}
+                  onDelete={() => deletePlant(plant.text)}
+                />
+              ))}
+        </PlantList>
 
-       <PlantsCounter
+       {/* <PlantsCounter
         total={totalPlants}
-      />
+      /> */}
 
       <BottomNavigationMUI />
 
     </Container>
+
+    {openModal && (
+    <Modal>
+      <p>{[0]?.text}</p>
+    </Modal>
+    )}
+
+    <CreatePlantButton
+      setOpenModal = {setOpenModal}
+    />
 
     </>
     );

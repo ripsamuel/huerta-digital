@@ -1,8 +1,11 @@
 import React from "react";
+import { PlantContext } from "../PlantContext";
 
-function PlantsCounter ({total}) {
+
+function PlantsCounter () {
+    const { totalPlants }= React.useContext(PlantContext)
     return (
-        <h2> hay {total} plantas</h2>
+        <h2> hay {totalPlants} plantas</h2>
     );
 }
 
