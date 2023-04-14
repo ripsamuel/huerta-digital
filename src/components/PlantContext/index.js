@@ -26,6 +26,13 @@ function PlantProvider (props) {
           return plantText.includes(searchText);
         });
       }
+      const addPlant = (text) => {
+        const newPlants = [...plants];
+        newPlants.push({
+          text,
+        });
+        savePlants(newPlants);
+      };
 
       const deletePlant = (text) => {
         const plantsIndex = plants.findIndex(plant => plant.text === text);
@@ -42,6 +49,7 @@ function PlantProvider (props) {
         searchedPlants,
         setSearchValue,
         deletePlant,
+        addPlant,
         setOpenModal,
         openModal,
     }}>
