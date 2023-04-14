@@ -7,9 +7,7 @@ import { PlantItem } from "../PlantItem/index.js";
 import { PlantSearch } from '../PlantSearch';
 import { PlantContext } from '../PlantContext';
 import { Modal } from '../Modal';
-import { CreatePlantButton } from '../CreatePlantButton';
-
-
+import { PlantForm } from "../PlantForm";
 
 
 
@@ -20,7 +18,6 @@ function AppUI()  {
     searchedPlants,
     deletePlant,
     openModal,
-    setOpenModal,
   } = React.useContext(PlantContext);
     return  (
     <>
@@ -59,13 +56,15 @@ function AppUI()  {
 
     {openModal && (
     <Modal>
-      <p>{[0]?.text}</p>
+      <PlantForm>
+        
+      </PlantForm>
     </Modal>
     )}
 
-    <CreatePlantButton
+    {/* <CreatePlantButton
       setOpenModal = {setOpenModal}
-    />
+    /> */}
 
     </>
     );

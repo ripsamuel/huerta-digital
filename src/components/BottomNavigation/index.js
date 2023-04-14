@@ -3,13 +3,22 @@ import React from "react";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import AddIcon from '@mui/icons-material/Add';
+import { PlantContext } from "../PlantContext";
 
 /*import { useState } from "react";*/
 // import "./BottomNavigationMUI.css";
 // import Home from "@mui/icons-material/Home";
 
-export const BottomNavigationMUI = ({handleOnChange}) => {
+export const BottomNavigationMUI = () => {
+  const {
+    setOpenModal,
+  } = React.useContext(PlantContext);
 
+  const onClickButton = () => {
+    setOpenModal(prevState => !prevState);
+  };
+
+  
   return (
     <BottomNavigation
       sx = {{
@@ -21,11 +30,10 @@ export const BottomNavigationMUI = ({handleOnChange}) => {
         textAlign :'left',
       }}
       showLabels
-      onChange={(event, newValue) => {
-        handleOnChange(newValue);
-      }}
+      style ={{zIndex : 10}}
+      
     >
-      <BottomNavigationAction
+      <BottomNavigationAction id="btn-home" onClick={onClickButton}
         sx ={{
           ":hover": {
             color: 'blue',
@@ -34,8 +42,9 @@ export const BottomNavigationMUI = ({handleOnChange}) => {
         label="Mis Plantas"
         icon={<HomeIcon />}
         value={"Home"}
+       
       />
-      <BottomNavigationAction id="btn_agregar" onClick={() => console.log('clik')}
+      <BottomNavigationAction id="btn_agregar" onClick={onClickButton}
         sx ={{
           ":hover": {
             color: 'blue',
