@@ -6,9 +6,13 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
+import ImageComponent from './ImageComponent';
+import { PlantContext } from '../PlantContext';
 
 
 function PlantItem(props) {
+  const { imageSrc} =
+    React.useContext(PlantContext);
   return (
     <li className="PlantItem">
 
@@ -39,6 +43,8 @@ function PlantItem(props) {
         width : '340px',
         height : '180px',
         }}>
+          {imageSrc && <ImageComponent src={imageSrc} alt="imagen renderizada" />}
+
 ß
         </CardContent>
 

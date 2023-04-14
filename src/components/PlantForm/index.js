@@ -1,12 +1,12 @@
 import React from "react";
 import { PlantContext } from "../PlantContext";
+import ImageComponent from "../PlantItem/ImageComponent";
 import "./PlantForm.css";
 
 function PlantForm() {
   const [newPlantValue, setNewPlantValue] = React.useState("");
-  const [imageSrc, setImageSrc] = React.useState("");
 
-  const { setOpenModal, addPlant } =
+  const { setOpenModal, addPlant, imageSrc, setImageSrc} =
     React.useContext(PlantContext);
 
   const onChange = (event) => {
@@ -46,7 +46,7 @@ function PlantForm() {
 
         <div className="img-container">
          <input type="file" onChange={handleFileSelect} />
-          {imageSrc && <img src={imageSrc} alt="imagen renderizada" />}
+          {imageSrc && <ImageComponent src={imageSrc} alt="imagen renderizada" />}
         </div>
 
         <button type="submit" className="AddPlant">

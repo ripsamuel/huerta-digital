@@ -13,6 +13,9 @@ function PlantProvider (props) {
       } = useLocalStorage('PLANTS_V1', []);
       const [searchValue, setSearchValue] = React.useState('');
       const [openModal, setOpenModal] = React.useState(false);
+      
+      const [imageSrc, setImageSrc] = React.useState("");
+      
       let searchedPlants = [];
 
       const totalPlants = plants.length;
@@ -52,6 +55,8 @@ function PlantProvider (props) {
         addPlant,
         setOpenModal,
         openModal,
+        imageSrc,
+        setImageSrc,
     }}>
         {props.children}
     </PlantContext.Provider>
