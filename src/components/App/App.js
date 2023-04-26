@@ -6,7 +6,7 @@ import { BottomNavigationMUI } from "../BottomNavigation";
 import { PlantList } from "../PlantList/index.js";
 import { PlantItem } from "../PlantItem/index.js";
 import { PlantsCounter } from "../PlantsCounter";
-import { PlantSearch } from "../PlantSearch";
+// import { PlantSearch } from "../PlantSearch";
 import { Modal } from "../Modal";
 import { PlantForm } from "../PlantForm";
 import { PlantHeader } from "../PlantHeader";
@@ -25,7 +25,8 @@ import { PlantHeader } from "../PlantHeader";
 
 
 function App() {
-  const { searchedPlants, deletePlant, openModal, totalPlants, searchValue, setSearchValue,
+  const { searchedPlants, deletePlant, openModal, totalPlants, 
+    // searchValue, setSearchValue,
     setOpenModal, addPlant, imageSrc, setImageSrc } = usePlants();
 
   return (
@@ -43,8 +44,7 @@ function App() {
         <PlantHeader>
           <PlantsCounter totalPlants={totalPlants} />
 
-          <PlantSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-
+          {/* <PlantSearch searchValue={searchValue} setSearchValue={setSearchValue} /> */}
         </PlantHeader>
 
         <PlantList>
@@ -54,6 +54,7 @@ function App() {
               text={plant.text}
               imageSrc={plant.imageSrc}
               onDelete={() => deletePlant(plant.text)}
+              // plantUpdate={() = plantUpdate(plant.imageSrc)}
             />
           ))}
         </PlantList>
@@ -68,7 +69,9 @@ function App() {
           setOpenModal={setOpenModal}
           addPlant={addPlant}
           imageSrc={imageSrc}
-          setImageSrc={setImageSrc}/>
+          setImageSrc={setImageSrc}
+          searchedPlants={searchedPlants}
+          />
         </Modal>
       )}
     </>

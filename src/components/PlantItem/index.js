@@ -42,8 +42,6 @@ function PlantItem(props) {
         height : '180px',
         }}>
           {props.imageSrc && <ImageComponent src={props.imageSrc} alt="imagen renderizada" />}
-
-contenido imagen
         </CardContent>
 
         <CardActions sx ={{
@@ -51,7 +49,7 @@ contenido imagen
         width : '325px',
         height : '50px',
         }}>
-          <Button size="small">Actualizar</Button>
+          <Button onClick={props.plantUpdate} size="small">Actualizar</Button>
 
         </CardActions>
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "./PlantForm.css";
 
-function PlantForm({ setOpenModal, addPlant, imageSrc, setImageSrc}) {
+function PlantForm({ setOpenModal, addPlant, imageSrc, setImageSrc ,searchedPlants}) {
  
   const [newPlantValue, setNewPlantValue] = React.useState("");
 
@@ -9,6 +9,8 @@ function PlantForm({ setOpenModal, addPlant, imageSrc, setImageSrc}) {
 
   const onChange = (event) => {
     setNewPlantValue(event.target.value);
+    
+
   };
 
   const onCancel = () => {
@@ -27,12 +29,29 @@ function PlantForm({ setOpenModal, addPlant, imageSrc, setImageSrc}) {
 
     reader.readAsDataURL(file);
   }
-  const onSubmit = (event) => {
-    event.preventDefault();
+
+const onSubmit = (event) => {
+  let valueExists = false;
+  searchedPlants.forEach((plant) => {
+    if (newPlantValue === plant.text) {
+      event.preventDefault();
+      valueExists = true;
+    alert("Please enter a diferent plant name");
+    }
+  });
+  if (!valueExists) {
     addPlant(newPlantValue, imageSrc);
     setOpenModal(false);
-  };
+  }
+}
 
+
+  //ORIGINAL
+  // const onSubmit = (event) => {
+  //   event.preventDefault();
+  //     addPlant(newPlantValue, imageSrc);
+  //     setOpenModal(false);
+  // };
 
   return (
     <form onSubmit={onSubmit}>
@@ -41,7 +60,7 @@ function PlantForm({ setOpenModal, addPlant, imageSrc, setImageSrc}) {
         <input
           value={newPlantValue}
           onChange={onChange}
-          placeholder="Nombre planton"
+          placeholder="Nombre planta"
         />
 
         <div className="img-container">
@@ -50,8 +69,7 @@ function PlantForm({ setOpenModal, addPlant, imageSrc, setImageSrc}) {
         </div>
 
         <button type="submit" className="AddPlant">
-          {" "}
-          Agregar/ Actualizar planta
+          Agregar / Actualizar planta
         </button>
         <div>
           <button type="button" onClick={onCancel}>
