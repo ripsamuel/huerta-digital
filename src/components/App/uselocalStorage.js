@@ -23,7 +23,7 @@ function useLocalStorage(itemName, initialValue) {
       } catch (error) {
         setError(error);
       }
-  }, [...initialValue, itemName]);
+  }, []);
   // console.log(...[1,3,2], itemName);
   // console.log([1,3,2], itemName);
 

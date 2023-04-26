@@ -1,9 +1,8 @@
 import React from 'react';
-import { PlantContext } from '../PlantContext';
-// import './PlantSearch.css';
+import './PlantSearch.css';
 
-function PlantSearch() {
-  const { searchValue, setSearchValue } = React.useContext(PlantContext);
+function PlantSearch({ searchValue, setSearchValue }) {
+
   const onSearchValueChange = (event) => {
     console.log(event.target.value);
     setSearchValue(event.target.value);
@@ -12,7 +11,7 @@ function PlantSearch() {
   return (
     <input
       className="PlantSearch"
-      placeholder="Cebolla"
+      placeholder="Busca una planta de la HUERTA"
       value={searchValue}
       onChange={onSearchValueChange}
     />

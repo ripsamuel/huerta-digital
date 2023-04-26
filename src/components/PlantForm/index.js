@@ -1,13 +1,11 @@
 import React from "react";
-import { PlantContext } from "../PlantContext";
-import ImageComponent from "../PlantItem/ImageComponent";
 import "./PlantForm.css";
 
-function PlantForm() {
+function PlantForm({ setOpenModal, addPlant, imageSrc, setImageSrc}) {
+ 
   const [newPlantValue, setNewPlantValue] = React.useState("");
 
-  const { setOpenModal, addPlant, imageSrc, setImageSrc} =
-    React.useContext(PlantContext);
+
 
   const onChange = (event) => {
     setNewPlantValue(event.target.value);
@@ -17,11 +15,6 @@ function PlantForm() {
     setOpenModal(false);
   };
 
-  const onSubmit = (event) => {
-    event.preventDefault();
-    addPlant(newPlantValue, imageSrc);
-    setOpenModal(false);
-  };
 
   function handleFileSelect(event) {
     const file = event.target.files[0];
@@ -29,10 +22,17 @@ function PlantForm() {
 
     reader.onload = function (event) {
       setImageSrc(event.target.result);
+
     };
 
     reader.readAsDataURL(file);
   }
+  const onSubmit = (event) => {
+    event.preventDefault();
+    addPlant(newPlantValue, imageSrc);
+    setOpenModal(false);
+  };
+
 
   return (
     <form onSubmit={onSubmit}>
@@ -46,7 +46,7 @@ function PlantForm() {
 
         <div className="img-container">
          <input type="file" onChange={handleFileSelect} />
-          {imageSrc && <ImageComponent src={imageSrc} alt="imagen renderizada" />}
+          {imageSrc && <img src={imageSrc} alt="imagen renderizada" />}
         </div>
 
         <button type="submit" className="AddPlant">

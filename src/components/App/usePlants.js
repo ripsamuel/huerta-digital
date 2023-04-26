@@ -1,10 +1,8 @@
 import React from 'react';
 import { useLocalStorage } from './uselocalStorage';
 
-const PlantContext = React.createContext();
 
-function PlantProvider (props) {
-
+function usePlants () {
     const {
         item: plants,
         saveItem: savePlants,
@@ -13,9 +11,9 @@ function PlantProvider (props) {
       } = useLocalStorage('PLANTS_V1', []);
       const [searchValue, setSearchValue] = React.useState('');
       const [openModal, setOpenModal] = React.useState(false);
-      
+
       const [imageSrc, setImageSrc] = React.useState("");
-      
+
       let searchedPlants = [];
 
       const totalPlants = plants.length;
@@ -29,10 +27,12 @@ function PlantProvider (props) {
           return plantText.includes(searchText);
         });
       }
-      const addPlant = (text) => {
+      const addPlant = (text, imageSrc) => {
         const newPlants = [...plants];
         newPlants.push({
           text,
+          imageSrc,
+
         });
         savePlants(newPlants);
       };
@@ -43,9 +43,8 @@ function PlantProvider (props) {
         newPlants.splice(plantsIndex, 1);
         savePlants(newPlants);
       };
-    return (
+    return {
 
-    <PlantContext.Provider value={{
         loading,
         error,
         totalPlants,
@@ -57,10 +56,7 @@ function PlantProvider (props) {
         openModal,
         imageSrc,
         setImageSrc,
-    }}>
-        {props.children}
-    </PlantContext.Provider>
-    );
+  };
 }
 
-export { PlantContext, PlantProvider };
+export { usePlants };
