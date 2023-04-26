@@ -11,6 +11,8 @@ function usePlants () {
       } = useLocalStorage('PLANTS_V1', []);
       const [searchValue, setSearchValue] = React.useState('');
       const [openModal, setOpenModal] = React.useState(false);
+      const [openModalChecked, setOpenModalChecked] = React.useState(false);
+
 
       const [imageSrc, setImageSrc] = React.useState("");
 
@@ -56,6 +58,8 @@ function usePlants () {
         openModal,
         imageSrc,
         setImageSrc,
+        openModalChecked,
+        setOpenModalChecked,
   };
 }
 

@@ -8,6 +8,8 @@ import { PlantItem } from "../PlantItem/index.js";
 import { PlantsCounter } from "../PlantsCounter";
 // import { PlantSearch } from "../PlantSearch";
 import { Modal } from "../Modal";
+import { ModalAdd } from "../Modal/ModalAdd";
+
 import { PlantForm } from "../PlantForm";
 import { PlantHeader } from "../PlantHeader";
 // import "./App.css";
@@ -27,7 +29,7 @@ import { PlantHeader } from "../PlantHeader";
 function App() {
   const { searchedPlants, deletePlant, openModal, totalPlants, 
     // searchValue, setSearchValue,
-    setOpenModal, addPlant, imageSrc, setImageSrc } = usePlants();
+    setOpenModal, addPlant, imageSrc, setImageSrc, openModalChecked, setOpenModalChecked} = usePlants();
 
   return (
     <>
@@ -71,8 +73,14 @@ function App() {
           imageSrc={imageSrc}
           setImageSrc={setImageSrc}
           searchedPlants={searchedPlants}
+          setOpenModalChecked={setOpenModalChecked}
           />
         </Modal>
+      )}
+      {openModalChecked && (
+        <ModalAdd
+        setOpenModalChecked={setOpenModalChecked}
+        />
       )}
     </>
   );

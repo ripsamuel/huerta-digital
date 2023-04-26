@@ -1,7 +1,9 @@
 import React from "react";
+import ReactDOM from 'react-dom';
+
 import "./PlantForm.css";
 
-function PlantForm({ setOpenModal, addPlant, imageSrc, setImageSrc ,searchedPlants}) {
+function PlantForm({ setOpenModal, addPlant, imageSrc, setImageSrc ,searchedPlants, setOpenModalChecked}) {
  
   const [newPlantValue, setNewPlantValue] = React.useState("");
 
@@ -42,10 +44,11 @@ const onSubmit = (event) => {
   if (!valueExists) {
     addPlant(newPlantValue, imageSrc);
     setOpenModal(false);
+    setOpenModalChecked(true);
+    
+
   }
 }
-
-
   //ORIGINAL
   // const onSubmit = (event) => {
   //   event.preventDefault();
