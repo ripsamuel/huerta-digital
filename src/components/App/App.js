@@ -9,10 +9,11 @@ import { PlantsCounter } from "../PlantsCounter";
 // import { PlantSearch } from "../PlantSearch";
 import { Modal } from "../Modal";
 import { ModalAdd } from "../Modal/ModalAdd";
-
-import { PlantForm } from "../PlantForm";
+import { PlantForm } from "../plantForm";
+//import { PlantForm } from "../PlantForm/index";
+import {SimpleBottomNavigation} from '../navbar'
 import { PlantHeader } from "../PlantHeader";
-// import "./App.css";
+import "./App.css";
 
 
 // const plantsDefault = [
@@ -24,66 +25,80 @@ import { PlantHeader } from "../PlantHeader";
 
 
 // ];
-
-
 function App() {
-  const { searchedPlants, deletePlant, openModal, totalPlants, 
-    // searchValue, setSearchValue,
-    setOpenModal, addPlant, imageSrc, setImageSrc, openModalChecked, setOpenModalChecked} = usePlants();
-
   return (
-    <>
-      <Container
-        sx={{
-          background: "whitesmoke",
-          borderRadius: "16px",
-          marginTop: "16px",
-          marginBottom: "20px",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <PlantHeader>
-          <PlantsCounter totalPlants={totalPlants} />
-
-          {/* <PlantSearch searchValue={searchValue} setSearchValue={setSearchValue} /> */}
-        </PlantHeader>
-
-        <PlantList>
-          {searchedPlants.map((plant) => (
-            <PlantItem
-              key={plant.text}
-              text={plant.text}
-              imageSrc={plant.imageSrc}
-              onDelete={() => deletePlant(plant.text)}
-              // plantUpdate={() = plantUpdate(plant.imageSrc)}
-            />
-          ))}
-        </PlantList>
-
-        <BottomNavigationMUI
-        setOpenModal={setOpenModal}
-        />
-      </Container>
-      {openModal && (
-        <Modal>
-          <PlantForm
-          setOpenModal={setOpenModal}
-          addPlant={addPlant}
-          imageSrc={imageSrc}
-          setImageSrc={setImageSrc}
-          searchedPlants={searchedPlants}
-          setOpenModalChecked={setOpenModalChecked}
-          />
-        </Modal>
-      )}
-      {openModalChecked && (
-        <ModalAdd
-        setOpenModalChecked={setOpenModalChecked}
-        />
-      )}
-    </>
+    <div className="App">
+      <header className="App-header">
+      </header>
+      <div className='App-body'>
+        <PlantForm/>
+        <SimpleBottomNavigation/>
+      </div>
+    </div>
+    
   );
 }
 
 export default App;
+
+// function App() {
+//   const { searchedPlants, deletePlant, openModal, totalPlants, 
+//     // searchValue, setSearchValue,
+//     setOpenModal, addPlant, imageSrc, setImageSrc, openModalChecked, setOpenModalChecked} = usePlants();
+
+//   return (
+//     <>
+//       <Container
+//         sx={{
+//           background: "whitesmoke",
+//           borderRadius: "16px",
+//           marginTop: "16px",
+//           marginBottom: "20px",
+//           display: "flex",
+//           flexDirection: "column",
+//         }}
+//       >
+//         <PlantHeader>
+//           <PlantsCounter totalPlants={totalPlants} />
+
+//           {/* <PlantSearch searchValue={searchValue} setSearchValue={setSearchValue} /> */}
+//         </PlantHeader>
+
+//         <PlantList>
+//           {searchedPlants.map((plant) => (
+//             <PlantItem
+//               key={plant.text}
+//               text={plant.text}
+//               imageSrc={plant.imageSrc}
+//               onDelete={() => deletePlant(plant.text)}
+//               // plantUpdate={() = plantUpdate(plant.imageSrc)}
+//             />
+//           ))}
+//         </PlantList>
+
+//         <BottomNavigationMUI
+//         setOpenModal={setOpenModal}
+//         />
+//       </Container>
+//       {openModal && (
+//         <Modal>
+//           <PlantForm
+//           setOpenModal={setOpenModal}
+//           addPlant={addPlant}
+//           imageSrc={imageSrc}
+//           setImageSrc={setImageSrc}
+//           searchedPlants={searchedPlants}
+//           setOpenModalChecked={setOpenModalChecked}
+//           />
+//         </Modal>
+//       )}
+//       {openModalChecked && (
+//         <ModalAdd
+//         setOpenModalChecked={setOpenModalChecked}
+//         />
+//       )}
+//     </>
+//   );
+// }
+
+// export default App;
