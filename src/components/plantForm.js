@@ -12,4 +12,4 @@ const PlantForm = () => {
   );
 };
 
-export default PlantForm;
+export {PlantForm};

@@ -6,7 +6,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeIcon from '@mui/icons-material/Home';
 import AddIcon from '@mui/icons-material/Add';
 
-export default function SimpleBottomNavigation() {
+function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);
 
   return (
@@ -25,6 +25,8 @@ export default function SimpleBottomNavigation() {
       </BottomNavigation>
     </Box>
   );
-}
+};
+
+export {SimpleBottomNavigation}
 
 
