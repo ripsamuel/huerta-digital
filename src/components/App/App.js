@@ -9,8 +9,7 @@ import { PlantsCounter } from "../PlantsCounter";
 // import { PlantSearch } from "../PlantSearch";
 import { Modal } from "../Modal";
 import { ModalAdd } from "../Modal/ModalAdd";
-
-import { PlantForm } from "../PlantForm";
+import { PlantForm } from "../PlantForm/index";
 import { PlantHeader } from "../PlantHeader";
 // import "./App.css";
 
