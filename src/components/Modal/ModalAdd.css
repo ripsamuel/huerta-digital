@@ -1,0 +1,16 @@
+.ModalChecked{
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
+    height: 30px;
+    background-color: brown;
+    margin: 10px 20px 100px 200px;
+    padding: 10px 10px;
+    align-items: center;
+
+}
+
+.cancelModalAdd {
+    margin: 10px 20px 10px 10px;
+
+}
